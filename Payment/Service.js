@@ -3,9 +3,13 @@ const axios = require("axios");
 class PaymentService {
   constructor() {
     this.tokensMercadoPago = {
+      prod: {
+        access_token:
+          "APP_USR-7137060902838531-082711-de5f14f75b65c49c53bae60ea45d3c22-385723281"
+      },
       test: {
         access_token:
-          "TEST-7137060902838531-082711-62e720737c91d3b723dd8c78042fd61f-385723281"   // change to production
+          "APP_USR-1159009372558727-072921-8d0b9980c7494985a5abd19fbe921a3d-617633181"
       }
     };
     this.mercadoPagoUrl = "https://api.mercadopago.com/checkout";
@@ -13,38 +17,36 @@ class PaymentService {
 
   async createPaymentMercadoPago(name, price, unit, img) {
 
-    const url = `${this.mercadoPagoUrl}/preferences?access_token=${this.tokensMercadoPago.test.access_token}`;
+    const url = `${this.mercadoPagoUrl}/preferences?access_token=${this.tokensMercadoPago.test.access_token}`; // change to production
 
     const preferences = {
-      external_reference: "ABC",
+    //  collector_id: "617633181",
+    //  client_id: "535650015",
       operation_type: "regular_payment",
+      external_reference: "iyanez717@gmail.com",
       items : [
         {
           id: "1234",
           title: name,
-          description: "Dispositivo movil",
-          picture_url: "https://image.freepik.com/free-psd/premium-mobile-phone-screen-mockup-template_53876-81688.jpg",
-          category_id: "1234",
+          description: "Dispositivo móvil de Tienda e-commerce",
+          picture_url: "",    // foto del producto seleccionado
+          category_id: "SmartPhones",
           quantity: parseInt(unit),
           unit_price: parseFloat(price)
         }
       ],
       payer: {
-        name: "Juan",
-        surname: "Lopez",
-        email: "user@email.com",
+        name: "Lalo",
+        surname: "Landa",
+        email: "test_user_58295862@testuser.com",
         phone: {
           area_code: "52",
-          number: "55554444"
+          number: "5549737300"
         },
-        /*identification": {  // Prevent fraud
-            "type": "",
-            "number": ""
-        },*/
         address: {
-          street_name: "Street",
-          street_number: "123",
-          zip_code: "5700"
+          street_name: "Insurgentes Sur",
+          street_number: "1602",
+          zip_code: "03940"
         }
       },
       back_urls: {
@@ -54,7 +56,10 @@ class PaymentService {
       },
       auto_return: "approved",
       payment_methods: {
-        default_installments: 1
+        excluded_payment_methods: [{id: "amex"}],
+        excluded_payment_types: [{ id: "atm" }],
+        installments: 6,
+        default_installments: 6
       },
       notification_url: "https://mercadopago-checout.herokuapp.com/webhook"
     };
@@ -62,7 +67,8 @@ class PaymentService {
     try {
       const request = await axios.post(url, preferences,{
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "x-integrator-id":"dev_24c65fb163bf11ea96500242ac130004"
         }
       });
       return request.data;

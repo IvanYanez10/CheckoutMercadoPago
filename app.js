@@ -35,7 +35,7 @@ app.post("/payment/new", (req, res) =>
 );
 
 app.post("/webhook", (req, res) =>{
-    //console.log(req.query);
+    console.log(req.query);
     PaymentInstance.webhook(req, res)
   }
 );
