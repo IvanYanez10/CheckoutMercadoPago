@@ -20,8 +20,6 @@ class PaymentService {
     const url = `${this.mercadoPagoUrl}/preferences?access_token=${this.tokensMercadoPago.test.access_token}`; // change to production
 
     const preferences = {
-      collector_id: "617633181",
-      client_id: "535650015",
       operation_type: "regular_payment",
       external_reference: "iyanez717@gmail.com",
       items : [
