@@ -11,7 +11,7 @@ class PaymentController {
         name,
         price,
         unit,
-        img
+        img 
       );
 
       console.log(checkout, "checkout response");

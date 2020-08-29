@@ -34,7 +34,11 @@ app.post("/payment/new", (req, res) =>
   PaymentInstance.getMercadoPagoLink(req, res)
 );
 
-app.post("/webhook", (req, res) => PaymentInstance.webhook(req, res));
+app.post("/webhook", (req, res) =>{
+    //console.log(req.query);
+    PaymentInstance.webhook(req, res)
+  }
+);
 
 app.use(express.static("assets"));
 
