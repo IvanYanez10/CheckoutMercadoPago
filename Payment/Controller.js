@@ -11,11 +11,11 @@ class PaymentController {
         name,
         price,
         unit,
-        img 
+        img
       );
 
       console.log(checkout, "checkout response");
-      return res.redirect(checkout.sandbox_init_point);
+      return res.redirect(checkout.sandbox_init_point);  // change to production
     } catch (err) {
       res.redirect("/");
       return res.status(500).json({

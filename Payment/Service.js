@@ -3,11 +3,10 @@ const axios = require("axios");
 class PaymentService {
   constructor() {
     this.tokensMercadoPago = {
-      prod: {},
       test: {
         access_token:
-          "TEST-7137060902838531-082711-62e720737c91d3b723dd8c78042fd61f-385723281"
-      }   
+          "TEST-7137060902838531-082711-62e720737c91d3b723dd8c78042fd61f-385723281"   // change to production
+      }
     };
     this.mercadoPagoUrl = "https://api.mercadopago.com/checkout";
   }
@@ -49,9 +48,9 @@ class PaymentService {
         }
       },
       back_urls: {
-        success: "http://localhost:3000/success",
-        pending: "http://localhost:3000/pending",
-        failure: "http://localhost:3000/error"
+        success: "https://mercadopago-checout.herokuapp.com/success",
+        pending: "https://mercadopago-checout.herokuapp.com/pending",
+        failure: "https://mercadopago-checout.herokuapp.com/error"
       },
       auto_return: "approved",
       payment_methods: {
