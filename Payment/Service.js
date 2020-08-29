@@ -16,7 +16,7 @@ class PaymentService {
 
     const url = `${this.mercadoPagoUrl}/preferences?access_token=${this.tokensMercadoPago.test.access_token}`;
 
-      const items = [
+    const items = [
       {
         id: "1234",
         title: name,
@@ -45,9 +45,9 @@ class PaymentService {
         }
       },
       back_urls: {
-        success: "http://localhost:3000/success",
-        pending: "http://localhost:3000/pending",
-        failure: "http://localhost:3000/error"
+        success: "https://mercadopago-checout.herokuapp.com/success",
+        pending: "https://mercadopago-checout.herokuapp.com/pending",
+        failure: "https://mercadopago-checout.herokuapp.com/error"
       },
       auto_return: "approved",
       payment_methods: {
@@ -57,12 +57,12 @@ class PaymentService {
           }
         ],
         installments: 6,
-        default_installments: 6
+        default_installments: 0
       },
-      notification_url: "http://localhost:3000/webhook",
+      notification_url: "https://mercadopago-checout.herokuapp.com/webhook",
       external_reference: "Reference_1234"
     };
-// post to checkout body preferences
+
     try {
       const request = await axios.post(url, preferences,{
         headers: {
