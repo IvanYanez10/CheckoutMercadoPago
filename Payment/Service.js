@@ -16,7 +16,6 @@ class PaymentService {
 
     const url = `${this.mercadoPagoUrl}/preferences?access_token=${this.tokensMercadoPago.test.access_token}`;
 
-    const preferences = {
       const items = [
       {
         id: "1234",
