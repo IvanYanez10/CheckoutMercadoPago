@@ -26,7 +26,9 @@ class PaymentController {
   }
 
   async webhook(req, res) {
+    console.log(req);
     if (req.method === "POST") {
+      console.log(req.query);
       let body = "";
       req.on("data", chunk => {
         body += chunk.toString();

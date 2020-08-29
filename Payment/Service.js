@@ -29,7 +29,7 @@ class PaymentService {
           id: "1234",
           title: name,
           description: "Dispositivo móvil de Tienda e-commerce",
-          picture_url: "",    // foto del producto seleccionado
+          picture_url: img,    // foto del producto seleccionado
           category_id: "SmartPhones",
           quantity: parseInt(unit),
           unit_price: parseFloat(price)
@@ -59,7 +59,7 @@ class PaymentService {
         excluded_payment_methods: [{id: "amex"}],
         excluded_payment_types: [{ id: "atm" }],
         installments: 6,
-        default_installments: 6
+        default_installments: 1
       },
       notification_url: "https://mercadopago-checout.herokuapp.com/webhook"
     };
