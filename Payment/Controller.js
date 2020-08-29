@@ -32,8 +32,7 @@ class PaymentController {
         body += chunk.toString();
       });
       req.on("end", () => {
-        //console.log(body, "webhook response");
-        console.log("Error hook");
+        console.log(body, "webhook response");
         res.end("ok");
       });
     }

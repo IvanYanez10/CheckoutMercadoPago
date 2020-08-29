@@ -17,15 +17,20 @@ class PaymentService {
     const url = `${this.mercadoPagoUrl}/preferences?access_token=${this.tokensMercadoPago.test.access_token}`;
 
     const preferences = {
-      items: [{
-          id: "item-ID-1234",
-          title: name,
-          description: "Dispositivo movil de Tienda e-commerce",
-          picture_url: "",
-          category_id: "Electronica",
-          quantity: parseInt(unit),
-          unit_price: parseFloat(price)
-      }],
+      const items = [
+      {
+        id: "1234",
+        title: name,
+        description: "Dispositivo movil",
+        picture_url: "https://courseit.com.ar/static/logo.png",
+        category_id: "1234",
+        quantity: parseInt(unit),
+        unit_price: parseFloat(price)
+      }
+    ];
+
+    const preferences = {
+      items,
       payer: {
         name: "Juan",
         surname: "Lopez",

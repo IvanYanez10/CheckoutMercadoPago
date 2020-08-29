@@ -10,8 +10,6 @@ const PaymentInstance = new PaymentController(new PaymentService());
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
-
-
 app.get("/", (req, res) => {
   res.render("home");
 });
@@ -37,8 +35,6 @@ app.post("/payment/new", (req, res) =>
 );
 
 app.post("/webhook", (req, res) => PaymentInstance.webhook(req, res));
-
-
 
 app.use(express.static("assets"));
 
